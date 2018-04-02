@@ -1,0 +1,15 @@
+Class throws sme exception for different errors; change it to:
+1- throw different exceptions OR
+2- check message thrown to distinguish between the two errors (see class NewTelephoneCompanyTest_BBT_WITH_MESSAGECHECKING.java inside package)
+
+ou could use the @Rule annotation with ExpectedException, like this:
+
+@Rule
+public ExpectedException expectedEx = ExpectedException.none();
+
+@Test
+public void shouldThrowRuntimeExceptionWhenEmployeeIDisNull() throws Exception {
+    expectedEx.expect(RuntimeException.class);
+    expectedEx.expectMessage("Employee ID is null");
+    // do something that should throw the exception...
+}
